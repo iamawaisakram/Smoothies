@@ -1,6 +1,6 @@
 <template>
   <div class="add-smoothie container">
-    <h2 class="center-align indigo-text">ADD NEW SMOOTHIE RECIPIE</h2>
+    <h2 class="center-align indigo-text">Add New Smoothie Recipie</h2>
     <form @submit.prevent="AddSmoothie">
       <div class="field title">
         <label for="title">Smoothie Title:</label>
@@ -9,7 +9,7 @@
       <div v-for="(ing, index) in ingredients" :key="index" class="field">
         <label for="ingredient">Ingredient:</label>
         <input type="text" name="ingredient" v-model="ingredients[index]" />
-        <i class="material-icons delete" @click="deleteIng(ing)">delete</i>
+        <i class="material-icons delete" @click="DeleteIng(ing)">delete</i>
       </div>
       <div class="field add-ingredient">
         <label for="add-ingredient">Add Ingredient:</label>
@@ -79,7 +79,7 @@ export default {
         this.feedback = "Please add some value to add in ingredients";
       }
     },
-    deleteIng(ing) {
+    DeleteIng(ing) {
       this.ingredients = this.ingredients.filter(ingredient => {
         return ingredient != ing;
       });
