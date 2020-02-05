@@ -9,11 +9,11 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "index",
+      name: "Index",
       component: index
     },
     {
-      path: "add-smoothie",
+      path: "/add-smoothie",
       name: "AddSmoothie",
       component: AddSmoothie
     }

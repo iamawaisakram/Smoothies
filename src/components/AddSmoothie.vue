@@ -28,6 +28,11 @@
 </template>
 
 <script>
+// * Packages Import
+import db from "@/firebase/init";
+import slugify from "slugify";
+
+// * Exporting Component
 export default {
   name: "AddSmoothie",
   data() {
@@ -35,12 +40,34 @@ export default {
       title: null,
       another: null,
       ingredients: [],
-      feedback: null
+      feedback: null,
+      slug: null
     };
   },
   methods: {
     AddSmoothie() {
-      console.log(this.title);
+      if (this.title) {
+        this.feedback = null;
+        this.slug = slugify(this.title, {
+          lower: true,
+          remove: /[$*_+~.()'"!\-:@]/g,
+          replacement: "-"
+        });
+        db.collection("smoothies")
+          .add({
+            title: this.title,
+            ingredients: this.ingredients,
+            slug: this.slug
+          })
+          .then(() => {
+            this.$router.push({ name: "Index" });
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      } else {
+        this.feedback = "Kindly provide a title for the Smoothie";
+      }
     },
     AddIng() {
       if (this.another) {
