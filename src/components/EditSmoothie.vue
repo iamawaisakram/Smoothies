@@ -46,7 +46,7 @@ export default {
     return {
       smoothie: null,
       another: null,
-      feedback: null
+      feedback: "Press Tab to add ingredient"
     };
   },
   methods: {

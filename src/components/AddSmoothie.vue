@@ -41,7 +41,7 @@ export default {
       title: null,
       another: null,
       ingredients: [],
-      feedback: null,
+      feedback: "Press Tab to add ingredient",
       slug: null
     };
   },
